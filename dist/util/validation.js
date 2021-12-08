@@ -10,7 +10,7 @@ var _require = require("express-validator"),
     buildCheckFunction = _require.buildCheckFunction;
 
 var validateRegistrationBody = function validateRegistrationBody() {
-  return [body("fullName").trim().exists().withMessage("name field is required").isLength({
+  return [body("userName").trim().exists().withMessage("userName field is required").isLength({
     min: 3
   }).withMessage("name must be greater than 3 letters"), body("email").exists().withMessage("email field is required").isEmail().withMessage("Email is invalid"), body("password").exists().withMessage("password field is required").isLength({
     min: 8,

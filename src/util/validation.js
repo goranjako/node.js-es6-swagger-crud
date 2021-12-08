@@ -6,10 +6,10 @@ const {
 
 const validateRegistrationBody = () => {
   return [
-    body("fullName")
+    body("userName")
       .trim()
       .exists()
-      .withMessage("name field is required")
+      .withMessage("userName field is required")
       .isLength({ min: 3 })
       .withMessage("name must be greater than 3 letters"),
     body("email")

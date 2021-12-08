@@ -9,23 +9,21 @@ exports["default"] = setRoutes;
 
 var _express = _interopRequireDefault(require("express"));
 
-var _auth = _interopRequireDefault(require("./util/auth"));
+var _auth = _interopRequireDefault(require("./controllers/auth.controller"));
+
+var _auth2 = _interopRequireDefault(require("./util/auth"));
 
 var _require = require('./util/validation'),
     validateRegistrationBody = _require.validateRegistrationBody,
     validateLoginBody = _require.validateLoginBody,
     Todovalidate = _require.Todovalidate,
     TodoId = _require.TodoId,
-    validate = _require.validate; //import authController from './controllers/auth.controller';
-
+    validate = _require.validate;
 
 function setRoutes(app) {
   var router = _express["default"].Router();
-  /*
-  router.post("/register", validateRegistrationBody(),validate, authController.register);
-  router.post("/login", validateLoginBody(), validate,authController.login);
-  */
 
-
+  router.post("/register", validateRegistrationBody(), validate, _auth["default"].register);
+  router.post("/login", validateLoginBody(), validate, _auth["default"].login);
   app.use('/', router);
 }
