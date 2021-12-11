@@ -25,6 +25,17 @@ var validateLoginBody = function validateLoginBody() {
   }).withMessage("password must be in between 8 to 12 characters long")];
 };
 
+var validateProductBody = function validateProductBody() {
+  return [body("code").trim().exists().withMessage("Code field is required"), body("name").exists().withMessage("Name field is required"), body("description").exists().withMessage("Description field is required").isLength({
+    min: 10,
+    max: 50
+  }).withMessage("Description must be in between 10 to 50 characters long"), body("price").exists().withMessage("Price field is required"), body("quantity").exists().withMessage("Quantity field is required")];
+};
+
+var validateOrderBody = function validateOrderBody() {
+  return [body("owner").trim().exists().withMessage("Owner field is required"), body("products").exists().withMessage("Products field is required"), body("quantity").exists().withMessage("Quantity field is required"), body("totalPrice").exists().withMessage("TotalPrice field is required")];
+};
+
 var validate = function validate(req, res, next) {
   var errors = validationResult(req);
 
@@ -44,5 +55,7 @@ var validate = function validate(req, res, next) {
 module.exports = {
   validateRegistrationBody: validateRegistrationBody,
   validateLoginBody: validateLoginBody,
+  validateProductBody: validateProductBody,
+  validateOrderBody: validateOrderBody,
   validate: validate
 };

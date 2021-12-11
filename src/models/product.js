@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const ProductSchema = new mongoose.Schema(
+const ProductSchema = new Schema(
   {
     code: {
-      tipe: Number,
-      required: [true, "Product Code is required"],
+      type: Number,
+      required: [true, 'Code is required']
     },
     name: {
       type: String,
@@ -15,25 +15,25 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: [true, "Product description is required"],
     },
-    sellprice: {
+    price: {
       type: Number,
       default: 0,
     },
     currency: {
       type: String,
       required: true,
-      enum: ["$", "€"],
-      default: "$",
+      //enum: ["$", "€"],
+      // default: "$",
     },
     quantity: {
       type: Number,
-      default: 1,
+      default: 0,
     },
     isfreeshipping: {
       type: Boolean,
       default: false,
     },
-    created_at: {
+    createdAt: {
         type: Date,
         default: Date.now
     },

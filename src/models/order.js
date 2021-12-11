@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const OrderSchema = new mongoose.Schema(
+const OrderSchema = new Schema(
   {
     owner: {
       type: Schema.Types.ObjectId,
       ref: "User"
     },
-    products: [{
+
       product: {
         type: Schema.Types.ObjectId,
         ref: "Product"
@@ -16,12 +16,12 @@ const OrderSchema = new mongoose.Schema(
         type: Number,
         default: 0
       },
-    }],
+    
       totalPrice: {
         type: Number,
         default: 0
       },
-    created_at: {
+    createdAt: {
       type: Date,
       default: Date.now
   },
