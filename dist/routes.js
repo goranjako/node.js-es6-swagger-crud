@@ -9,23 +9,38 @@ exports["default"] = setRoutes;
 
 var _express = _interopRequireDefault(require("express"));
 
-var _auth = _interopRequireDefault(require("./util/auth"));
+var _auth = _interopRequireDefault(require("./controllers/auth.controller"));
+
+var _product = _interopRequireDefault(require("./controllers/product.controller"));
+
+var _order = _interopRequireDefault(require("./controllers/order.controller"));
+
+var _auth2 = _interopRequireDefault(require("./util/auth"));
 
 var _require = require('./util/validation'),
     validateRegistrationBody = _require.validateRegistrationBody,
     validateLoginBody = _require.validateLoginBody,
-    Todovalidate = _require.Todovalidate,
-    TodoId = _require.TodoId,
-    validate = _require.validate; //import authController from './controllers/auth.controller';
-
+    validateProductBody = _require.validateProductBody,
+    validateOrderBody = _require.validateOrderBody,
+    validate = _require.validate;
 
 function setRoutes(app) {
-  var router = _express["default"].Router();
-  /*
-  router.post("/register", validateRegistrationBody(),validate, authController.register);
-  router.post("/login", validateLoginBody(), validate,authController.login);
-  */
+  var router = _express["default"].Router(); //authRoute
 
 
+  router.post("/register", validateRegistrationBody(), validate, _auth["default"].register);
+  router.post("/login", validateLoginBody(), validate, _auth["default"].login); //productRoute
+
+  router.route('/product').post(validateProductBody(), validate, _product["default"].create);
+  router.route('/product').get(_product["default"].getAll);
+  router.route('/product/:id').get(_product["default"].get);
+  router.route('/product/:id').put(validateProductBody(), validate, _product["default"].put);
+  router.route('/product/:id')["delete"](_product["default"]["delete"]); //orderRoute
+
+  router.route('/order').post(validateOrderBody(), validate, _order["default"].create);
+  router.route('/order').get(_order["default"].getAll);
+  router.route('/order/:id').get(_order["default"].get);
+  router.route('/order/:id').put(validateOrderBody(), validate, _order["default"].put);
+  router.route('/order/:id')["delete"](_order["default"]["delete"]);
   app.use('/', router);
 }
