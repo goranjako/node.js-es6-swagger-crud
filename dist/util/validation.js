@@ -33,7 +33,7 @@ var validateProductBody = function validateProductBody() {
 };
 
 var validateOrderBody = function validateOrderBody() {
-  return [body("owner").trim().exists().withMessage("Owner field is required"), body("products").exists().withMessage("Products field is required"), body("quantity").exists().withMessage("Quantity field is required"), body("totalPrice").exists().withMessage("TotalPrice field is required")];
+  return [body("owner").trim().exists().withMessage("Owner field is required"), body("product").exists().withMessage("Products field is required"), body("quantity").exists().withMessage("Quantity field is required"), body("totalPrice").exists().withMessage("TotalPrice field is required")];
 };
 
 var validate = function validate(req, res, next) {

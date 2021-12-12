@@ -11,8 +11,8 @@ class OrderService {
 
   static async getById(id) {
     try {
-      const Order = await Order.findById(id);
-      return Order;
+      const order = await Order.findById(id);
+      return order;
     } catch (error) {
       throw error;
     }
@@ -20,8 +20,8 @@ class OrderService {
 
   static async addOrder(data) {
     try {
-      const Order = new Order(data);
-      return await Order.save();
+      const order = new Order(data);
+      return await order.save();
     } catch (error) {
       throw error;
     }
@@ -29,9 +29,9 @@ class OrderService {
 
   static async update(id, data) {
     try {
-      const Order = await Order.findById({ _id: id }).exec();
-      Order.set(data);
-      const result = await Order.save();
+      const order = await Order.findById({ _id: id }).exec();
+      order.set(data);
+      const result = await order.save();
       return result;
     } catch (error) {
       throw error;
@@ -47,4 +47,4 @@ class OrderService {
   }
 }
 
-export default new OrderService;
+export default  OrderService;
