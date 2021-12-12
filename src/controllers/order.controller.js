@@ -14,15 +14,15 @@ class OrderController {
   async create(req, res, next) {
     try {
       const order = {
-        owner: req.body.owner,
-        product: req.body.product,
-        quantity: req.body.quantity,
-        totalPrice: req.body.totalPrice
+        owner:req.body.owner,
+        product:req.body.product,
+        quantity:req.body.quantity,
+        totalPrice:req.body.totalPrice
       };
       const obj = await OrderService.addOrder(order);
       return res
         .status(200)
-        .json({ success: true, message: " order is Created successfully." });
+        .json({ success: true, message: " Order is Created successfully." });
     } catch (err) {
       res.status(422).json(err.message);
     }
@@ -79,4 +79,4 @@ class OrderController {
   }
 }
 
-export default new OrderController;
+export default new OrderController();

@@ -83,7 +83,7 @@ var OrderController = /*#__PURE__*/function () {
                 obj = _context2.sent;
                 return _context2.abrupt("return", res.status(200).json({
                   success: true,
-                  message: " order is Created successfully."
+                  message: " Order is Created successfully."
                 }));
 
               case 8:

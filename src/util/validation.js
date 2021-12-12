@@ -69,7 +69,7 @@ const validateOrderBody = () => {
       .trim()
       .exists()
       .withMessage("Owner field is required"),
-    body("products")
+    body("product")
       .exists()
       .withMessage("Products field is required"),
     body("quantity")

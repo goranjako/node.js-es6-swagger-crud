@@ -60,19 +60,18 @@ var OrderService = /*#__PURE__*/function () {
     key: "getById",
     value: function () {
       var _getById = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(id) {
-        var _Order;
-
+        var order;
         return _regenerator["default"].wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _Order.findById(id);
+                return _order["default"].findById(id);
 
               case 3:
-                _Order = _context2.sent;
-                return _context2.abrupt("return", _Order);
+                order = _context2.sent;
+                return _context2.abrupt("return", order);
 
               case 7:
                 _context2.prev = 7;
@@ -97,16 +96,15 @@ var OrderService = /*#__PURE__*/function () {
     key: "addOrder",
     value: function () {
       var _addOrder = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(data) {
-        var _Order2;
-
+        var order;
         return _regenerator["default"].wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.prev = 0;
-                _Order2 = new _Order2(data);
+                order = new _order["default"](data);
                 _context3.next = 4;
-                return _Order2.save();
+                return order.save();
 
               case 4:
                 return _context3.abrupt("return", _context3.sent);
@@ -134,25 +132,22 @@ var OrderService = /*#__PURE__*/function () {
     key: "update",
     value: function () {
       var _update = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(id, data) {
-        var _Order3, result;
-
+        var order, result;
         return _regenerator["default"].wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return _Order3.findById({
+                return _order["default"].findById({
                   _id: id
                 }).exec();
 
               case 3:
-                _Order3 = _context4.sent;
-
-                _Order3.set(data);
-
+                order = _context4.sent;
+                order.set(data);
                 _context4.next = 7;
-                return _Order3.save();
+                return order.save();
 
               case 7:
                 result = _context4.sent;
@@ -215,6 +210,5 @@ var OrderService = /*#__PURE__*/function () {
   return OrderService;
 }();
 
-var _default = new OrderService();
-
+var _default = OrderService;
 exports["default"] = _default;

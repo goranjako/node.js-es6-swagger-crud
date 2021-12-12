@@ -31,16 +31,16 @@ function setRoutes(app) {
   router.post("/register", validateRegistrationBody(), validate, _auth["default"].register);
   router.post("/login", validateLoginBody(), validate, _auth["default"].login); //productRoute
 
-  router.route('/product').post(validateProductBody(), validate, _product["default"].create);
-  router.route('/product').get(_product["default"].getAll);
-  router.route('/product/:id').get(_product["default"].get);
-  router.route('/product/:id').put(validateProductBody(), validate, _product["default"].put);
-  router.route('/product/:id')["delete"](_product["default"]["delete"]); //orderRoute
+  router.route('/product').post(_auth2["default"].verifyToken, validateProductBody(), validate, _product["default"].create);
+  router.route('/product').get(_auth2["default"].verifyToken, _product["default"].getAll);
+  router.route('/product/:id').get(_auth2["default"].verifyToken, _product["default"].get);
+  router.route('/product/:id').put(_auth2["default"].verifyToken, validateProductBody(), validate, _product["default"].put);
+  router.route('/product/:id')["delete"](_auth2["default"].verifyToken, _product["default"]["delete"]); //orderRoute
 
-  router.route('/order').post(validateOrderBody(), validate, _order["default"].create);
-  router.route('/order').get(_order["default"].getAll);
-  router.route('/order/:id').get(_order["default"].get);
-  router.route('/order/:id').put(validateOrderBody(), validate, _order["default"].put);
-  router.route('/order/:id')["delete"](_order["default"]["delete"]);
+  router.route('/order').post(_auth2["default"].verifyToken, validateOrderBody(), validate, _order["default"].create);
+  router.route('/order').get(_auth2["default"].verifyToken, _order["default"].getAll);
+  router.route('/order/:id').get(_auth2["default"].verifyToken, _order["default"].get);
+  router.route('/order/:id').put(_auth2["default"].verifyToken, validateOrderBody(), validate, _order["default"].put);
+  router.route('/order/:id')["delete"](_auth2["default"].verifyToken, _order["default"]["delete"]);
   app.use('/', router);
 }
