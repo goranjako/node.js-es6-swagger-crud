@@ -497,7 +497,7 @@
         ]
       }
     },
-    "/order/{orderId}": {
+    "/order/{id}": {
       "get": {
         "tags": ["Order"],
         "summary": "Get Order",
