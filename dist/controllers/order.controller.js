@@ -71,8 +71,8 @@ var OrderController = /*#__PURE__*/function () {
               case 0:
                 _context2.prev = 0;
                 order = {
-                  owner: req.body.owner,
-                  product: req.body.product,
+                  userId: req.body.userId,
+                  productId: req.body.productId,
                   quantity: req.body.quantity,
                   totalPrice: req.body.totalPrice
                 };
@@ -172,8 +172,8 @@ var OrderController = /*#__PURE__*/function () {
             switch (_context4.prev = _context4.next) {
               case 0:
                 data = {
-                  owner: req.body.owner,
-                  product: req.body.product,
+                  userId: req.body.userId,
+                  productId: req.body.productId,
                   quantity: req.body.quantity,
                   totalPrice: req.body.totalPrice
                 };

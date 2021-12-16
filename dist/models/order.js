@@ -11,11 +11,11 @@ var _mongoose = _interopRequireDefault(require("mongoose"));
 
 var Schema = _mongoose["default"].Schema;
 var OrderSchema = new Schema({
-  owner: {
+  userId: {
     type: Schema.Types.ObjectId,
     ref: "User"
   },
-  product: {
+  productId: {
     type: Schema.Types.ObjectId,
     ref: "Product"
   },

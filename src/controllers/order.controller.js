@@ -14,8 +14,8 @@ class OrderController {
   async create(req, res, next) {
     try {
       const order = {
-        owner:req.body.owner,
-        product:req.body.product,
+        userId:req.body.userId,
+        productId:req.body.productId,
         quantity:req.body.quantity,
         totalPrice:req.body.totalPrice
       };
@@ -45,10 +45,10 @@ class OrderController {
   // Update by id
   async put(req, res) {
     const data = {
-        owner: req.body.owner,
-        product: req.body.product,
-        quantity: req.body.quantity,
-        totalPrice: req.body.totalPrice
+      userId:req.body.userId,
+      productId:req.body.productId,
+      quantity:req.body.quantity,
+      totalPrice:req.body.totalPrice
     };
     const id = req.params.id;
 
